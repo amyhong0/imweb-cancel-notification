@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>아임웹 취소 접수 알림 - 설정</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 480px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    h1 { font-size: 1.25rem; margin-bottom: 8px; }
+    p { color: #666; font-size: 0.9rem; margin-bottom: 16px; }
+    label { display: block; font-weight: 500; margin-bottom: 4px; }
+    input[type="text"], input[type="password"], input[type="number"] {
+      width: 100%;
+      padding: 8px 12px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    input[type="number"] { width: 100px; }
+    .hint { font-size: 0.8rem; color: #888; margin-top: -8px; margin-bottom: 12px; }
+    button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    button:hover { background: #1d4ed8; }
+    .status { margin-top: 16px; font-size: 0.9rem; }
+    .status.ok { color: #059669; }
+    .status.err { color: #dc2626; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>아임웹 취소 접수 알림 설정</h1>
+  <p>아임웹 API 키를 입력하면 주기적으로 취소 접수(승인 대기) 건을 확인하고, 새 건이 생기면 데스크톱 알림을 띄웁니다.</p>
+
+  <label for="apiKey">API Key</label>
+  <input type="text" id="apiKey" placeholder="아임웹 관리자 > 개발자센터에서 발급">
+  <p class="hint">아임웹 관리자 → 설정 → 개발자센터에서 API 키를 발급받을 수 있습니다.</p>
+
+  <label for="apiSecret">API Secret</label>
+  <input type="password" id="apiSecret" placeholder="API Secret">
+
+  <label for="intervalMin">확인 간격 (분)</label>
+  <input type="number" id="intervalMin" min="1" max="60" value="5">
+  <p class="hint">1~60분. 너무 짧으면 API 제한에 걸릴 수 있습니다.</p>
+
+  <button id="save">저장</button>
+  <button id="test">연결 테스트</button>
+
+  <div id="status" class="status"></div>
+
+  <p style="margin-top: 24px;">
+    <a href="https://developers.imweb.me" target="_blank" rel="noopener">아임웹 개발자센터</a>
+  </p>
+
+  <script src="credentials.default.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
