@@ -2,23 +2,15 @@
 
 아임웹 쇼핑몰에서 **취소 접수**(승인 대기) 건이 발생하면 **데스크톱 알림**을 띄워, 관리자가 취소를 승인할 수 있도록 알려 주는 Chrome 확장 프로그램입니다.
 
-> **설치 버튼 한 번**처럼 쓰려면 Chrome 웹 스토어(유료·개발자 등록비 약 $5)에 올려야 합니다.  
-> **무료**로 쓰려면 아래 3단계만 하면 됩니다. (다운로드 1번 → Chrome에서 폴더 선택 1번 → API 키 입력 1번)
-
 ---
 
 ## 설치 (3단계)
-
-**사용자는 공개 저장소에서 받으면 됩니다.** (GitHub 계정 없이 가능)
-
-- **공개 저장소**: https://github.com/amyhong0/imweb-cancel-notification
 
 ### 1단계: 확장 프로그램 받기
 
 **방법 A – ZIP으로 받기 (git 없이)**  
 1. [공개 저장소](https://github.com/amyhong0/imweb-cancel-notification) 페이지에서 **Code → Download ZIP** 클릭 (계정·로그인 불필요)  
 2. ZIP 압축 해제  
-3. **`imweb-cancel-notification-main`** 폴더 전체 사용 (2단계에서 이 폴더 선택)
 
 **방법 B – clone (PC에 git 설치되어 있을 때)**  
 ```bash
@@ -31,9 +23,8 @@ git clone https://github.com/amyhong0/imweb-cancel-notification.git
 1. Chrome 주소창에 **`chrome://extensions/`** 입력 후 엔터  
 2. 오른쪽 위 **개발자 모드** 켜기  
 3. **압축해제된 확장 프로그램을 로드합니다** 클릭  
-4. **1단계에서 받은 폴더**(`imweb-cancel-notification-main` 또는 `imweb-cancel-notification`) 선택 → **폴더 선택** 클릭  
+4. **1단계에서 받은 폴더**(`imweb-cancel-notification`) 선택 → **폴더 선택** 클릭  
 
-→ 이 단계까지 하면 확장 프로그램이 설치됩니다.
 
 ### 3단계: API 키 입력 (한 번만)
 
@@ -88,22 +79,8 @@ imweb-cancel-notification/
 - API Key/Secret은 **옵션 저장** 또는 **credentials.default.js**(로컬에만 둠)에서만 사용하며, `https://api.imweb.me` 호출에만 쓰입니다.
 - `credentials.default.js`는 `.gitignore`에 포함되어 GitHub에 올라가지 않습니다.
 
-## 다른 PC에서 쓸 때
-
-같은 방법으로 **1단계(공개 저장소에서 다운로드/clone) → 2단계(Chrome 로드) → 3단계(API 키)** 만 반복하면 됩니다.  
-공개 저장소: https://github.com/amyhong0/imweb-cancel-notification
 
 ---
-
-## (참고) Chrome 웹 스토어 – 설치 버튼 한 번 쓰려면
-
-**설치 버튼 한 번**으로 쓰게 하려면 Chrome 웹 스토어에 올려야 하고, 이때 **개발자 일회성 등록비**(약 $5)가 필요합니다.
-
-- [Chrome Web Store 개발자 대시보드](https://chrome.google.com/webstore/devconsole)
-- [공식: 개발자 등록 및 게시](https://developer.chrome.com/docs/webstore/register)
-
-스토어에 올리면 사용자는 Chrome 웹 스토어에서 검색 → **설치** 한 번 → 옵션에서 API 키만 입력하면 됩니다.  
-무료로 쓰려면 위 **무료 설치 (3단계)** 를 사용하면 됩니다.
 
 ## 문제 해결
 
