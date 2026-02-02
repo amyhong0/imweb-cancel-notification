@@ -9,14 +9,16 @@
 
 ## 설치 (3단계)
 
-**GitHub 계정 없이** 가능합니다. (이 저장소는 공개되어 있어 로그인 없이 받을 수 있습니다.)
+**사용자는 공개 저장소에서 받으면 됩니다.** (GitHub 계정 없이 가능)
+
+- **공개 저장소**: https://github.com/amyhong0/imweb-cancel-notification
 
 ### 1단계: 확장 프로그램 받기
 
 **방법 A – ZIP으로 받기 (git 없이)**  
-1. 이 페이지에서 **Code** → **Download ZIP** 클릭  
+1. [공개 저장소](https://github.com/amyhong0/imweb-cancel-notification) 페이지에서 **Code → Download ZIP** 클릭 (계정·로그인 불필요)  
 2. ZIP 압축 해제  
-3. **`imweb-cancel-notification-main`** 폴더 전체를 사용 (이 폴더를 2단계에서 선택)
+3. **`imweb-cancel-notification-main`** 폴더 전체 사용 (2단계에서 이 폴더 선택)
 
 **방법 B – clone (PC에 git 설치되어 있을 때)**  
 ```bash
@@ -35,7 +37,7 @@ git clone https://github.com/amyhong0/imweb-cancel-notification.git
 
 ### 3단계: API 키 입력 (한 번만)
 
-1. 확장 프로그램 **아이콘** 우클릭 → **옵션**  
+1. 확장 프로그램 **아이콘** 우클릭 → **옵션** (또는 `chrome://extensions/`에서 해당 확장의 **세부정보** → **확장 프로그램 옵션**)  
 2. **API Key**, **API Secret** 입력 (아임웹 관리자 → 설정 → 개발자센터에서 발급)  
 3. **저장** 클릭  
 4. **연결 테스트**로 동작 확인  
@@ -48,7 +50,7 @@ git clone https://github.com/amyhong0/imweb-cancel-notification.git
 
 - 아임웹 API로 주문·품목(prod-orders)을 주기적으로 조회
 - **취소 접수**(claim_status: CANCEL_REQUEST) 건만 감지 — 이미 취소 완료된 건이 아님
-- 새로 발생한 취소 접수 건마다 데스크톱 알림 표시 (주문번호, 금액, "승인해 주세요")
+- 새로 발생한 취소 접수 건마다 데스크톱 알림 표시 (주문번호, "관리자 페이지에서 승인해 주세요")
 - 이미 알림을 보낸 건은 다시 알림하지 않음
 
 ## 사용 방법
@@ -59,8 +61,8 @@ git clone https://github.com/amyhong0/imweb-cancel-notification.git
 
 ## 확인 간격
 
-- 기본 5분. 1~60분 사이로 옵션에서 설정 가능합니다.
-- 너무 짧으면 아임웹 API 제한에 걸릴 수 있으므로 5~10분 권장.
+- **분**: 1~60분. **시간**: 1~168시간(7일). 기본 5분.
+- 너무 짧게 하면 아임웹 API 제한에 걸릴 수 있으므로 5~10분 권장.
 
 ## 아임웹 API 참고
 
@@ -72,7 +74,9 @@ git clone https://github.com/amyhong0/imweb-cancel-notification.git
 ```
 imweb-cancel-notification/
 ├── manifest.json
+├── icon128.png
 ├── credentials.example.js   # API 키 입력용 템플릿 (복사 후 credentials.default.js 로 사용)
+├── credentials.default.js   # 로컬 전용, .gitignore 대상 (GitHub에 미포함)
 ├── background.js
 ├── options.html, options.js
 ├── popup.html, popup.js
@@ -82,9 +86,26 @@ imweb-cancel-notification/
 ## 보안
 
 - API Key/Secret은 **옵션 저장** 또는 **credentials.default.js**(로컬에만 둠)에서만 사용하며, `https://api.imweb.me` 호출에만 쓰입니다.
-- `credentials.default.js`는 `.gitignore`에 있어 GitHub에 올라가지 않습니다.
+- `credentials.default.js`는 `.gitignore`에 포함되어 GitHub에 올라가지 않습니다.
+
+## 다른 PC에서 쓸 때
+
+같은 방법으로 **1단계(공개 저장소에서 다운로드/clone) → 2단계(Chrome 로드) → 3단계(API 키)** 만 반복하면 됩니다.  
+공개 저장소: https://github.com/amyhong0/imweb-cancel-notification
+
+---
+
+## (참고) Chrome 웹 스토어 – 설치 버튼 한 번 쓰려면
+
+**설치 버튼 한 번**으로 쓰게 하려면 Chrome 웹 스토어에 올려야 하고, 이때 **개발자 일회성 등록비**(약 $5)가 필요합니다.
+
+- [Chrome Web Store 개발자 대시보드](https://chrome.google.com/webstore/devconsole)
+- [공식: 개발자 등록 및 게시](https://developer.chrome.com/docs/webstore/register)
+
+스토어에 올리면 사용자는 Chrome 웹 스토어에서 검색 → **설치** 한 번 → 옵션에서 API 키만 입력하면 됩니다.  
+무료로 쓰려면 위 **무료 설치 (3단계)** 를 사용하면 됩니다.
 
 ## 문제 해결
 
-- **알림이 안 뜨는 경우**: Chrome 설정에서 해당 확장 프로그램 알림이 허용되어 있는지 확인하세요.
+- **알림이 안 뜨는 경우**: Chrome 설정에서 해당 사이트/확장 프로그램 알림이 허용되어 있는지 확인하세요. 설정 페이지의 **테스트 알림** 버튼으로 확인할 수 있습니다.
 - **연결 테스트 실패**: API Key/Secret, 개발자센터에서 키 활성화 여부를 확인하세요.

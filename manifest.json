@@ -3,6 +3,9 @@
   "name": "아임웹 취소 접수 알림",
   "version": "1.0.0",
   "description": "아임웹 취소 접수(승인 대기) 건 발생 시 데스크톱 알림을 표시합니다.",
+  "icons": {
+    "128": "icon128.png"
+  },
   "permissions": [
     "storage",
     "alarms",

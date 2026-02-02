@@ -50,20 +50,32 @@
   <label for="apiSecret">API Secret</label>
   <input type="password" id="apiSecret" placeholder="API Secret">
 
-  <label for="intervalMin">확인 간격 (분)</label>
-  <input type="number" id="intervalMin" min="1" max="60" value="5">
-  <p class="hint">1~60분. 너무 짧으면 API 제한에 걸릴 수 있습니다.</p>
+  <label for="intervalValue">확인 간격</label>
+  <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+    <input type="number" id="intervalValue" min="1" max="60" value="5" style="width: 80px;">
+    <select id="intervalUnit" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;">
+      <option value="min">분</option>
+      <option value="hour">시간</option>
+    </select>
+  </div>
+  <p class="hint">분: 1~60분. 시간: 1~168시간(7일). 너무 짧으면 API 제한에 걸릴 수 있습니다.</p>
 
   <button id="save">저장</button>
   <button id="test">연결 테스트</button>
+  <button id="checkNow">지금 확인</button>
+  <button id="clearNotified" type="button" style="background:#6b7280;">알림 이력 초기화</button>
+  <button id="testNotification" type="button" style="background:#059669;">테스트 알림</button>
 
   <div id="status" class="status"></div>
+  <p class="hint">테스트 알림이 안 뜨면: macOS는 <strong>시스템 설정 → 알림 → Google Chrome → 알림 허용</strong>, Chrome은 <strong>설정 → 개인정보 및 보안 → 사이트 설정 → 알림</strong>에서 허용해 주세요.</p>
+  <p class="hint">취소 접수 알림이 안 뜨면: 알림 이력 초기화 → 지금 확인. (이미 알림 보낸 건은 다시 안 뜸)</p>
 
   <p style="margin-top: 24px;">
     <a href="https://developers.imweb.me" target="_blank" rel="noopener">아임웹 개발자센터</a>
   </p>
 
-  <script src="credentials.default.js"></script>
+  <!-- options.js를 먼저 로드해 버튼이 항상 동작하도록 함 (credentials 실패 시에도) -->
   <script src="options.js"></script>
+  <script src="credentials.default.js"></script>
 </body>
 </html>
